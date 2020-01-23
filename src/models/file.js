@@ -18,7 +18,9 @@ const FileSchema = new Schema({
     agilidad: String,
     resistencia: String,
     inteligencia: String,
-    percepcion: String
+    percepcion: String,
 });
+
+FileSchema.set('timestamps', true);
 
 module.exports = mongoose.model('File', FileSchema);
