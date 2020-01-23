@@ -33,8 +33,8 @@ var mainRoutes = require('./routes/index');
 var usersRoutes = require('./routes/users');
 var filesRoutes = require('./routes/files');
 app.use('/', mainRoutes);
-app.use('/users', usersRoutes);
-app.use('/files', filesRoutes);
+app.use(usersRoutes);
+app.use(filesRoutes);
 
 
 // static files

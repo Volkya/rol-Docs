@@ -3,12 +3,12 @@ const router = express.Router();
 // Models
 const User = require('../models/user');
 
-router.get('/signin', (req, res) => {
+router.get('/users/signin', (req, res) => {
     res.render('users/signin');
 });
 
 
-router.get('/signup', (req, res) => {
+router.get('/users/signup', (req, res) => {
     res.render('users/signup', {title: 'Sign up'});
 });
 
