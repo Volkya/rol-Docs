@@ -2,7 +2,7 @@
     <div class="col-lg-12 mx-auto">
         <div class="card">
             <div class="card-body">
-                <form action="/files/add" method="POST">
+                <form action="/files/add" method="POST" enctype="multipart/form-data">
                     <table>
                         <tbody>
 <!--                        BASICO-->
@@ -18,7 +18,7 @@
                         <tr>
                             <td>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="username" placeholder="Enter your name">
+                                    <input type="text" class="form-control" name="name" placeholder="Enter your name">
                                 </div>
                             </td>
                             <td>
@@ -148,7 +148,7 @@
                         <tr>
                             <td colspan="2">
                                 <div class="form-group">
-                                    <input type="file" class="form-control-file" id="">
+                                    <input type="file" class="form-control-file" name="image">
                                 </div>
                             </td>
                             <td colspan="2"><button class="btn btn-lg btn-block btn-primary active">Create file</button></td>

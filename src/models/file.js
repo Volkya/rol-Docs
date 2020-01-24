@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const FileSchema = new Schema({
-    username: String,
+    name: {type: String, required: true},
     edad: Number,
     pb: String,
     empleo: String,
@@ -19,6 +19,9 @@ const FileSchema = new Schema({
     resistencia: String,
     inteligencia: String,
     percepcion: String,
+    created_at: {type: Date, default: Date.now()},
+    public_id: String,
+    imageURL: String
 });
 
 FileSchema.set('timestamps', true);
