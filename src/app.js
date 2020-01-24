@@ -34,6 +34,15 @@ const storage = pics.diskStorage({
     }
 });
 app.use(pics({storage}).single('image'));
+app.use(methodOverride('_method'));
+app.use(session({
+    secret: 'secret',
+    resave: 'true',
+    saveUninitialized: 'true'
+}));
+app.use(logger.initialize());
+app.use(logger.session());
+app.use(flash());
 
 // Global variables
 

@@ -47,14 +47,15 @@ router.post('/files/add', async (req, res) => {
             historia
         });
     }else {
-        const picUpdate = await cloudinary.v2.uploader.upload(req.file.path);
+        const picUpdate = await cloudinary.v2.uploader.upload(req.file.path, {folder: 'rolDocs'});
         const newFile = new File({name, historia, fisico, psicologia,
             edad, empleo, grupo, raza, nacionalidad, orientacion, fuerza,
-            destreza, resistencia, inteligencia, percepcion, agilidad, pb, created_at, imageURL: picUpdate.url});
+            destreza, resistencia, inteligencia, percepcion, agilidad, pb, created_at, imageURL: picUpdate.url, public_id: picUpdate.public_id});
         await newFile.save();
         await fs.remove(req.file.path);
-        // req.flash('success_msg', 'File added succefully');
-        res.redirect('/files')
+        req.flash('success_msg', 'File added succefully');
+        res.redirect('/files');
+        console.log(picUpdate);
     }
 });
 // EDIT FILE
