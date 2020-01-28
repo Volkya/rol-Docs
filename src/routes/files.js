@@ -20,11 +20,7 @@ router.get('/files/add' , (req, res) => {
     res.render('files/new-file');
 });
 router.post('/files/add', async (req, res) => {
-    const { name,
-        edad, pb, empleo, grupo, raza,
-        nacionalidad, orientacion, psicologia,
-        fisico, historia, fuerza, destreza,
-        agilidad, resistencia, inteligencia, percepcion, created_at } = req.body; // con esto obtenemos los value del form
+    const { name, edad, pb, empleo, grupo, raza, nacionalidad, orientacion, psicologia, fisico, historia, fuerza, destreza, agilidad, resistencia, inteligencia, percepcion, created_at } = req.body; // con esto obtenemos los value del form
     const errors = []; // aca metemos elementos x cada tipo de error
     if(!name){
         errors.push({text: "Please, fill the name of your pj"});

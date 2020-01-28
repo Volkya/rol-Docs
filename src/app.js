@@ -45,14 +45,21 @@ app.use(logger.session());
 app.use(flash());
 
 // Global variables
+// app.use((req, res, next) => {
+//
+// });
 
 // Routes
 var mainRoutes = require('./routes/index');
 var usersRoutes = require('./routes/users');
 var filesRoutes = require('./routes/files');
+// let networkRoutes = require('./routes/network');
+// let chronologieRoutes = require('./routes/chonologie');
 app.use('/', mainRoutes);
 app.use(usersRoutes);
 app.use(filesRoutes);
+// app.use(networkRoutes);
+// app.use(chronologieRoutes);
 
 
 // static files
