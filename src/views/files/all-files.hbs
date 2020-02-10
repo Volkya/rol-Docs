@@ -1,0 +1,24 @@
+    <div class="row">
+    {{#each files}}
+<!--        NOTAS CARGADAS-->
+        <div class="col-md-3">
+            <div class="card-header">
+                <h3><a href="">{{name}}</a></h3>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-warning btn-block btn-sm"><i class="fas fa-edit"></i>Edit</button>
+                <button class="btn btn-danger btn-block btn-sm"><i class="fas fa-delete"></i>Delete</button>
+            </div>
+        </div>
+<!--        NO TENES NOTAS CARGADAS-->
+        {{else}}
+        <div class="card mx-auto">
+            <div class="card-header">
+                <h2>There are not files yet!</h2>
+            </div>
+            <div class="card-body">
+                <button class="btn btn-success btn-block"><a href="">Create your first file character!</a></button>
+            </div>
+        </div>
+    {{/each}}
+</div>

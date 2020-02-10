@@ -11,9 +11,9 @@ cloudinary.config({
 });
 // ALL OBJECTS
 router.get('/files', async (req, res) => {
-    // res.render('files/all-files');
     const files = await File.find().sort({date: 'desc'});
-    res.render('files/all-files', {files});
+    res.render('files/all-files', { files }); // send array objects files to template
+    // res.json(files);
 });
 // ADD FILE
 router.get('/files/add' , (req, res) => {

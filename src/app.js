@@ -13,13 +13,13 @@ const app = express();
 require('./database');
 
 // SETTINGS
-app.set('port', process.env.PORT || 4000);
+app.set('port', process.env.PORT || 2000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
-    extname: '.hbs'
+    extname: '.hbs',
 }));
 app.set('view engine', '.hbs');
 
@@ -38,6 +38,7 @@ app.use(methodOverride('_method'));
 app.use(session({
     secret: 'secret',
     resave: 'true',
+    resave: 'true',
     saveUninitialized: 'true'
 }));
 app.use(logger.initialize());
@@ -45,22 +46,17 @@ app.use(logger.session());
 app.use(flash());
 
 // Global variables
-// app.use((req, res, next) => {
-//
-// });
+app.use((req, res, next) => {
+ res.locals.success_msg = req.flash('success_msg');
+ res.locals.error_msg = req.flash('error_msg');
+ res.locals.error = req.flash('error'); // los mensajes flash de passport se llaman error
+    next();
+});
 
 // Routes
-var mainRoutes = require('./routes/index');
-var usersRoutes = require('./routes/users');
-var filesRoutes = require('./routes/files');
-// let networkRoutes = require('./routes/network');
-// let chronologieRoutes = require('./routes/chonologie');
-app.use('/', mainRoutes);
-app.use(usersRoutes);
-app.use(filesRoutes);
-// app.use(networkRoutes);
-// app.use(chronologieRoutes);
-
+app.use('/', require('./routes/index'));
+app.use(require('./routes/users'));
+app.use(require('./routes/files'));
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
