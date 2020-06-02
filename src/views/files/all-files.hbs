@@ -1,13 +1,16 @@
-    <div class="row">
+<div class="row">
     {{#each files}}
 <!--        NOTAS CARGADAS-->
         <div class="col-md-3">
             <div class="card-header">
-                <h3><a href="">{{name}}</a></h3>
+                <h3><a href="/files/view/{{_id}}">{{name}}</a></h3>
             </div>
             <div class="card-body">
-                <button class="btn btn-warning btn-block btn-sm"><i class="fas fa-edit"></i>Edit</button>
-                <button class="btn btn-danger btn-block btn-sm"><i class="fas fa-delete"></i>Delete</button>
+                <button class="btn btn-warning btn-block btn-sm"><a href="/files/edit/{{_id}}">EDIT</a></button>
+                <form action="/files/delete/{{_id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger btn-block btn-sm">DELETE</button>
+                </form>
             </div>
         </div>
 <!--        NO TENES NOTAS CARGADAS-->

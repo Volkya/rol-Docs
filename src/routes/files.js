@@ -71,6 +71,7 @@ router.put('/files/edit/:id', async (req, res) => {
 // DELETE FILE
 router.delete('/files/delete/:id', async (req, res) => {
    await File.findByIdAndDelete(req.params.id);
+   req.flash('success_msg', 'Note deleted successfully');
    res.redirect('/files');
 });
 
